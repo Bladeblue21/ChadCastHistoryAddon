@@ -1,0 +1,147 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+	<Script file="ChadCastHistory.lua"/>
+		<Frame name="CastDisplayTemplate" virtual="true">
+			<Size x="265" y="60" />
+			<Anchors>
+				<Anchor point="LEFT" x="200" y="-100"/>
+			</Anchors>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture parentKey="Background" file="Interface\DialogFrame\UI-DialogBox-Background.blp"/>
+<!-- 					<Texture parentKey="Background" file="Interface\BUTTONS\UI-ActionButton-Border.blp" alphaMode="ADD">
+						<Color a="1" r="0" g="1" b="0" />
+					</Texture> -->
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="CastSpellFrameTemplate"  parentArray="RecentCastFrames"  virtual="true">
+			<Layers>
+				<Layer level="ARTWORK">
+					<Texture parentKey="stexture">
+						<Size x="40" y="40"/>
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="CastStatusBorderTemplate" parentArray="RecentCastStatus" virtual="true">
+			<Layers>
+				<Layer level="ARTWORK">
+					<Texture parentKey="goodCast" file="Interface\BUTTONS\UI-ActionButton-Border.blp" hidden="true" alphaMode="ADD">
+						<Color a="1" r="0" g="1" b="0" />
+					</Texture>
+					<Texture parentKey="failCast" file="Interface\BUTTONS\UI-ActionButton-Border.blp" hidden="true" alphaMode="ADD">
+						<Color a="1" r="1" g="0" b="0" />
+					</Texture>
+					<Texture parentKey="kickCast" file="Interface\TARGETINGFRAME\UI-RaidTargetingIcon_7.blp" hidden="true">
+						<Size x="40" y="40"/>
+						<Anchors>
+							<Anchor point="CENTER"/>
+						</Anchors>
+					</Texture>
+				</Layer>
+				<Layer level="OVERLAY">
+					<Texture parentKey="otexture">
+						<!-- <Size x="40" y="40"/> -->
+						<Anchors>
+							<Anchor point="RIGHT"/>
+						</Anchors>
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="ChadSpellCastHistory" inherits="CastDisplayTemplate" parent="UIParent">
+			<Frames>
+				<Frame parentKey="RecentCastFrame1" inherits="CastSpellFrameTemplate">
+					<Size x="40" y="40"/>
+					<Anchors>
+						<Anchor point="LEFT"  x="10" />
+					</Anchors>
+				</Frame>
+				<Frame parentKey="RecentCastFrame2" inherits="CastSpellFrameTemplate">
+					<Size x="40" y="40"/>
+					<Anchors>
+						<Anchor point="LEFT" x="63" />
+						<!-- <Anchor point="LEFT" relativeTo="$parentRecentCastFrame1" relativePoint="RIGHT" x="10"/> -->
+					</Anchors>
+				</Frame>
+				<Frame parentKey="RecentCastFrame3" inherits="CastSpellFrameTemplate">
+					<Size x="40" y="40"/>
+					<Anchors>
+						<Anchor point="LEFT" x="113"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="RecentCastFrame4" inherits="CastSpellFrameTemplate">
+					<Size x="40" y="40"/>
+					<Anchors>
+						<Anchor point="LEFT" x="163"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="RecentCastFrame5" inherits="CastSpellFrameTemplate">
+					<Size x="40" y="40"/>
+					<Anchors>
+						<Anchor point="LEFT" x="213"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="CastStatusFrame1" inherits="CastStatusBorderTemplate">
+					<Size x="84" y="84"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-11"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="CastStatusFrame2" inherits="CastStatusBorderTemplate">
+					<Size x="84" y="84"/>
+					<Anchors>
+						<Anchor point="LEFT" x="41"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="CastStatusFrame3" inherits="CastStatusBorderTemplate">
+					<Size x="84" y="84"/>
+					<Anchors>
+						<Anchor point="LEFT" x="91"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="CastStatusFrame4" inherits="CastStatusBorderTemplate">
+					<Size x="84" y="84"/>
+					<Anchors>
+						<Anchor point="LEFT" x="141"/>
+					</Anchors>
+				</Frame>
+				<Frame parentKey="CastStatusFrame5" inherits="CastStatusBorderTemplate">
+					<Size x="84" y="84"/>
+					<Anchors>
+						<Anchor point="LEFT" x="191"/>
+					</Anchors>
+				</Frame>
+			</Frames>
+			<Scripts>
+				<OnLoad>
+					CastDisplayOnLoad(self)
+				</OnLoad>
+				<OnEvent>
+					CastDisplayOnEvent(self,event,...)
+				</OnEvent>
+			</Scripts>
+		</Frame>
+		
+		<!-- <Frame name="CastStatusHistory" inherits="CastDisplayTemplate" parent="UIParent">
+			<Frames>
+				<Frame parentKey="StatusBorder1" inherits="CastStatusBorderTemplate">
+					<Layers>
+						<Layer level="OVERLAY">
+							<Texture parentKey="borderTex1" > 
+							file="Interface\BUTTONS\UI-ActionButton-Border.blp" alphaMode="ADD">
+								<Color a="1" r="1" g="0" b="0" /> 
+								<Size x="84" y="84"/>
+								<Anchors>
+									<Anchor x="-209" y="21"/>
+								</Anchors>
+							</Texture>
+						</Layer>
+					</Layers>
+				</Frame>
+			</Frames>
+		</Frame> -->
+</Ui>
